@@ -13,7 +13,7 @@ namespace Random_Stuff
         public Move() { }
         public int isOk(int x,int y)
         {
-            int[,] matrix = map.getMatrix();
+            int[,] matrix = randomMap.Map.getMatrix();
             if( matrix == null)
             {
                 Console.WriteLine("La matrice non può essere vuota");

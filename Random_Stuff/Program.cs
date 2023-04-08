@@ -12,28 +12,19 @@ namespace randomMap
 {
     class Map
     {
-        private int[,] map_game = new int[5, 5];
+        private static int[,] map_game = new int[10,10];
         public Map(){}
-        public int[,] getMatrix()
+        public static int[,] getMatrix()
         {
             return map_game;
         }
-        private void init_matrix()
-        {
-            for(int i = 0; i< map_game.GetLength(0); i++)
-            {
-                for(int j = 0;i< map_game.GetLength(1); j++) {
-                    map_game[i,j] = 0;
-                }
-            }
-        }
         public void show_Stuff(Map map)
         {
-            for (int i = 0; i < map.map_game.GetLength(0); i++)
+            for (int i = 0; i < randomMap.Map.map_game.GetLength(0); i++)
             {
-                for (int j = 0; j < map.map_game.GetLength(1); j++)
+                for (int j = 0; j < randomMap.Map.map_game.GetLength(1); j++)
                 {
-                    switch(map.map_game[i, j])
+                    switch(randomMap.Map.map_game[i, j])
                     {
                         case 0:
                             Console.Write("X ");
@@ -54,6 +45,10 @@ namespace randomMap
         {
             Map map = new Map();
 
+            Random random = new Random();
+
+            Police police = new Police();
+
             Boss boss1 = new Boss("Fabio");
             Boss boss2 = new Boss("Arianna");
 
@@ -62,13 +57,14 @@ namespace randomMap
 
             Move move = new Move();
 
-            int x = map.map_game.GetLength(0)-1;
-            int y = map.map_game.GetLength(1)-1;
+            int x = randomMap.Map.map_game.GetLength(0)-1;
+            int y = randomMap.Map.map_game.GetLength(1)-1;
 
-            map.map_game[0, 0] = 2;
-            map.map_game[4, 4] = 1;
+            randomMap.Map.map_game[random.Next(0,x), random.Next(0, y)] = 2;
+            randomMap.Map.map_game[x,y] = 1;
 
             map.show_Stuff(map);
+            police.whereIs();
             move.isOk(3, 3);
         }
     }
