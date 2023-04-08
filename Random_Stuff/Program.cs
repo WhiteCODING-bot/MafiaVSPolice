@@ -12,17 +12,36 @@ namespace randomMap
 {
     class Map
     {
-        private int[,] map_game = { { 0, 0, 0, 0 , 0 , 0}, 
-                                    { 0, 0, 0, 0 , 0 , 0},
-                                    { 0, 0, 0, 0 , 0 , 0},
-                                    { 0, 0, 0, 0 , 0 , 0},
-                                    { 0, 0, 0, 0 , 0 , 0},
-                                    { 0, 0, 0, 0 , 0 , 0},
-        };
+        private int[,] map_game = new int[5, 5];
         public Map(){}
         public int[,] getMatrix()
         {
             return map_game;
+        }
+
+        private void random_shit(int[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                Console.Write("Row " + i + ": ");
+
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+
+                }
+                Console.WriteLine();
+
+            }
+        }
+        private void init_matrix()
+        {
+            for(int i = 0; i< map_game.GetLength(0); i++)
+            {
+                for(int j = 0;i< map_game.GetLength(1); j++) {
+                    map_game[i,j] = 0;
+                }
+            }
         }
         public void show_Stuff(Map map)
         {
@@ -63,26 +82,11 @@ namespace randomMap
             int y = map.map_game.GetLength(1);
 
             map.map_game[0, 0] = 2;
-            map.map_game[5, 5] = 1;
+            map.map_game[4, 4] = 1;
 
-            switch (move.isOk(x,y))
-            {
-                case -1:
-                    Console.WriteLine("La matrice non può essere nulla");
-                    break;
-
-                case 1:
-                    Console.WriteLine("La cella di in posizione " + x + " ; " + y + " e' libera");
-                    break;
-
-                case 0:
-                    Console.WriteLine("La cella di in posizione " + x + " ; " + y + " e' non libera");
-                    break;
-            }
-
-
+            map.random_shit(map.map_game);
             map.show_Stuff(map);
-
+            //Console.WriteLine(map.map_game.GetValue(5,5));
         }
     }
 }
