@@ -18,22 +18,6 @@ namespace randomMap
         {
             return map_game;
         }
-
-        private void random_shit(int[,] matrix)
-        {
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                Console.Write("Row " + i + ": ");
-
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    Console.Write(matrix[i, j] + " ");
-
-                }
-                Console.WriteLine();
-
-            }
-        }
         private void init_matrix()
         {
             for(int i = 0; i< map_game.GetLength(0); i++)
@@ -52,13 +36,13 @@ namespace randomMap
                     switch(map.map_game[i, j])
                     {
                         case 0:
-                            Console.Write("X\t");
+                            Console.Write("X ");
                             break;
                         case 1:
-                            Console.Write("G\t");
+                            Console.Write("G ");
                             break;
                         case 2:
-                            Console.Write("P\t");
+                            Console.Write("P ");
                             break;
 
                     }
@@ -78,15 +62,14 @@ namespace randomMap
 
             Move move = new Move();
 
-            int x = map.map_game.GetLength(0);
-            int y = map.map_game.GetLength(1);
+            int x = map.map_game.GetLength(0)-1;
+            int y = map.map_game.GetLength(1)-1;
 
             map.map_game[0, 0] = 2;
             map.map_game[4, 4] = 1;
 
-            map.random_shit(map.map_game);
             map.show_Stuff(map);
-            //Console.WriteLine(map.map_game.GetValue(5,5));
+            move.isOk(3, 3);
         }
     }
 }
