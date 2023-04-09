@@ -7,6 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Random_Stuff;
 
+/*
+ * TO DO:
+ * --> Add random move + recursion
+ * --> Add fight
+ 
+ 
+*/
+
+
 
 namespace randomMap
 {
@@ -15,6 +24,19 @@ namespace randomMap
         private static int[,] map_game = new int[10,10];
         Random random = new Random();
         public Map(){}
+        public void initPos_Test()
+        {
+
+            Move move = new Move();
+            int[] pos = { 0, 0, 2, 0};
+
+            map_game[pos[0], pos[1]] = 1;
+            map_game[pos[2], pos[3]] = 2;
+
+        }
+
+
+
         public void initPos()
         {
             Move move = new Move();
@@ -63,18 +85,25 @@ namespace randomMap
 
             Police police = new Police();
 
+            Move move = new Move();
+
             Boss boss1 = new Boss("Fabio");
-            Boss boss2 = new Boss("Arianna");
 
             Gang gang1 = new Gang(101, boss1);
-            Gang gang2 = new Gang(102, boss2);
 
             int x = randomMap.Map.map_game.GetLength(0)-1;
             int y = randomMap.Map.map_game.GetLength(1)-1;
 
-            map.initPos();
+            map.initPos_Test();
             map.show_Stuff(map);
+
+            Console.WriteLine("\n");
             
+            move.moveThroughMap(gang1.whereIs(), 1);
+            move.moveThroughMap(police.whereIs(), 2);
+            map.show_Stuff(map);
+
+            Console.WriteLine("\n");
         }
     }
 }

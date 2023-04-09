@@ -9,12 +9,16 @@ namespace Random_Stuff
     internal class Police
     {
         private int[,] matrix = Map.getMatrix();
-        private int[] last_pos = {0,0};
+        private int[] last_pos = new int[2];
+        public void setLastPos(int[] newPos)
+        {
+            last_pos = newPos;
+        }
         public int[] getLastPos() 
         {
             return this.last_pos;
         }
-        public int whereIs()
+        public int[] whereIs()
         {
             for (int i = 0; i < this.matrix.GetLength(0); i++)
             {
@@ -22,13 +26,12 @@ namespace Random_Stuff
                 {
                     if (this.matrix[i,j] == 2)
                     {
-                        last_pos[0] = i;
-                        last_pos[1] = j;
+                        this.last_pos[0] = i;
+                        this.last_pos[1] = j;
                     }
                 }
             }
-            Console.WriteLine(last_pos[0] + " ; " + last_pos[1]);
-            return 0;
+            return this.last_pos;
         }
     }
 }
