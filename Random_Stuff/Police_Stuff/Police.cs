@@ -10,6 +10,10 @@ namespace Random_Stuff
     {
         private int[,] matrix = Map.getMatrix();
         private int[] last_pos = {0,0};
+        public int[] getLastPos() 
+        {
+            return this.last_pos;
+        }
         public int whereIs()
         {
             for (int i = 0; i < this.matrix.GetLength(0); i++)

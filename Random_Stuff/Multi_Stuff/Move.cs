@@ -11,6 +11,30 @@ namespace Random_Stuff
     {
         private Map map = new Map();
         public Move() { }
+
+        public int isOk(int[] pos)
+        {
+            int x = pos[0];
+            int y = pos[1];
+
+            int[,] matrix = randomMap.Map.getMatrix();
+            if (matrix == null)
+            {
+                Console.WriteLine("La matrice non può essere vuota");
+                return -1;
+            }
+            switch (matrix.GetValue(x, y))
+            {
+                case 0:
+                    return 0;
+                case 1:
+                    return 1;
+                case 2:
+                    return 2;
+            }
+            return 93;
+        }
+
         public int isOk(int x,int y)
         {
             int[,] matrix = randomMap.Map.getMatrix();
@@ -30,7 +54,7 @@ namespace Random_Stuff
                     Console.WriteLine("Nella cella c'è la polizia");
                     return 2;
             }
-            return 93;
+            return 3;
         }
     }
 }

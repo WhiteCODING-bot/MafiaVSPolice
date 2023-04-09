@@ -13,7 +13,19 @@ namespace randomMap
     class Map
     {
         private static int[,] map_game = new int[10,10];
+        Random random = new Random();
         public Map(){}
+        public void initPos()
+        {
+            Move move = new Move();
+            int[] pos = { random.Next(0, map_game.GetLength(0)),
+                random.Next(0, map_game.GetLength(0)),
+                random.Next(0, map_game.GetLength(0)),
+                random.Next(0, map_game.GetLength(0))};
+
+            map_game[pos[0], pos[1]] = 1;
+            map_game[pos[2], pos[3]] = 2;
+        }
         public static int[,] getMatrix()
         {
             return map_game;
@@ -30,10 +42,14 @@ namespace randomMap
                             Console.Write("X ");
                             break;
                         case 1:
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write("G ");
+                            Console.ForegroundColor = ConsoleColor.White;
                             break;
                         case 2:
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write("P ");
+                            Console.ForegroundColor = ConsoleColor.White;
                             break;
 
                     }
@@ -45,8 +61,6 @@ namespace randomMap
         {
             Map map = new Map();
 
-            Random random = new Random();
-
             Police police = new Police();
 
             Boss boss1 = new Boss("Fabio");
@@ -55,17 +69,12 @@ namespace randomMap
             Gang gang1 = new Gang(101, boss1);
             Gang gang2 = new Gang(102, boss2);
 
-            Move move = new Move();
-
             int x = randomMap.Map.map_game.GetLength(0)-1;
             int y = randomMap.Map.map_game.GetLength(1)-1;
 
-            randomMap.Map.map_game[random.Next(0,x), random.Next(0, y)] = 2;
-            randomMap.Map.map_game[x,y] = 1;
-
+            map.initPos();
             map.show_Stuff(map);
-            police.whereIs();
-            move.isOk(3, 3);
+            
         }
     }
 }
