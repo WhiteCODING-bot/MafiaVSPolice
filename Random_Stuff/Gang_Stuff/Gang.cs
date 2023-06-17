@@ -14,7 +14,7 @@ namespace Random_Stuff
         Boss boss = new Boss();
 
         int gangester = 0;
-        private int[,] matrix = Map.getMatrix();
+        private object [,] matrix = Map.getMatrix();
         private int[] last_pos = new int[2];
 
         public int getGangester() { return gangester; }
@@ -42,7 +42,7 @@ namespace Random_Stuff
             {
                 for (int j = 0; j < this.matrix.GetLength(1); j++)
                 {
-                    if (this.matrix[i, j] == 1)
+                    if (this.matrix[i, j] == this)
                     {
                         this.last_pos[0] = i;
                         this.last_pos[1] = j;

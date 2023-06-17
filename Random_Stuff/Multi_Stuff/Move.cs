@@ -18,7 +18,7 @@ namespace Random_Stuff
             int x = pos[0];
             int y = pos[1];
 
-            int[,] matrix = randomMap.Map.getMatrix();
+            object[,] matrix = randomMap.Map.getMatrix();
             if (matrix == null)
             {
                 Console.WriteLine("La matrice non può essere vuota");
@@ -41,7 +41,7 @@ namespace Random_Stuff
 
         public int isOk(int x,int y)
         {
-            int[,] matrix = randomMap.Map.getMatrix();
+            object[,] matrix = randomMap.Map.getMatrix();
             if( matrix == null)
             {
                 Console.WriteLine("La matrice non può essere vuota");
@@ -67,7 +67,7 @@ namespace Random_Stuff
             {
                 if (isOk(x, y + 1) == 0)
                 {
-                    int[,] matrix = randomMap.Map.getMatrix();
+                    object[,] matrix = randomMap.Map.getMatrix();
                     matrix[x, y] = 0;
                     matrix[x + 1, y] = team;
                     police.setLastPos(police.whereIs());
@@ -79,7 +79,7 @@ namespace Random_Stuff
 
             }
             else {
-                int[,] matrix = randomMap.Map.getMatrix();
+                object[,] matrix = randomMap.Map.getMatrix();
                 matrix[x, y] = 0;
                 matrix[x + 1, y] = team;
 

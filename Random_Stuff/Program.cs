@@ -21,7 +21,7 @@ namespace randomMap
 {
     class Map
     {
-        private static int[,] map_game = new int[10,10];
+        private static object[,] map_game = new object[10,10];
         Random random = new Random();
         public Map(){}
         public void initPos_Test()
@@ -36,7 +36,6 @@ namespace randomMap
         }
 
 
-
         public void initPos()
         {
             Move move = new Move();
@@ -48,10 +47,11 @@ namespace randomMap
             map_game[pos[0], pos[1]] = 1;
             map_game[pos[2], pos[3]] = 2;
         }
-        public static int[,] getMatrix()
+        public static object[,] getMatrix()
         {
             return map_game;
         }
+
         public void show_Stuff(Map map)
         {
             for (int i = 0; i < randomMap.Map.map_game.GetLength(0); i++)

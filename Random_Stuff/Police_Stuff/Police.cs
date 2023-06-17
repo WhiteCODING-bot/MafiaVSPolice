@@ -8,7 +8,7 @@ namespace Random_Stuff
 {
     internal class Police
     {
-        private int[,] matrix = Map.getMatrix();
+        private object[,] matrix = Map.getMatrix();
         private int[] last_pos = new int[2];
         public void setLastPos(int[] newPos)
         {
@@ -24,7 +24,7 @@ namespace Random_Stuff
             {
                 for (int j = 0; j < this.matrix.GetLength(1); j++)
                 {
-                    if (this.matrix[i,j] == 2)
+                    if (this.matrix[i,j] == this)
                     {
                         this.last_pos[0] = i;
                         this.last_pos[1] = j;
