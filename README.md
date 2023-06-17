@@ -1,3 +1,5 @@
+<h1>Mafia vs Police  <br> THE GAME</h1>
+
 Ok so.... this is a random game with:
 Thread
 Semaphore
