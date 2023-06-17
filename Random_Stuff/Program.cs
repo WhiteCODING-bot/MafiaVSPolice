@@ -36,7 +36,6 @@ namespace randomMap
         }
 
 
-
         public void initPos()
         {
             Move move = new Move();
@@ -52,6 +51,7 @@ namespace randomMap
         {
             return map_game;
         }
+
         public void show_Stuff(Map map)
         {
             for (int i = 0; i < randomMap.Map.map_game.GetLength(0); i++)
